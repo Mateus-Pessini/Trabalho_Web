@@ -1,0 +1,37 @@
+create table servico(
+  id SERIAL PRIMARY KEY,
+  ds_servico VARCHAR(50) NOT NULL,
+  vlr_servico NUMERIC(15,2),
+  status boolean
+
+);
+
+
+create table pessoa(
+  id SERIAL PRIMARY KEY,
+  nm_Pessoa VARCHAR(50),
+  nr_Telefone VARCHAR(50),
+  email VARCHAR(50) 
+
+);
+
+create table pet(
+  id SERIAL PRIMARY KEY,
+  nm_Pet VARCHAR(50),
+  dono_Id SERIAL REFERENCES pessoa(id),
+  genero VARCHAR(50),
+  vl_Peso INTEGER,
+  porte VARCHAR(50)	
+
+);
+
+create table endereco(
+  id SERIAL PRIMARY KEY,
+  nomeRua VARCHAR(50),
+  dsBairro VARCHAR(50),
+  nrCasa INTEGER,
+  nrCep VARCHAR(50),
+  complemento VARCHAR(50),
+  stAtivo boolean,
+  id_pessoa INTEGER REFERENCES pessoa(id)
+);
